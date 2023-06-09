@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void cargar(int v1[10]){
+    int i;
+    for (i=0;i<10;i++){
+        v1[i] = i;
+    }
+}
+
+
+int main()
+{
+    int vector1[10],i;
+    cargar(vector1);
+
+    for(i=0;i<10;i++)
+    printf("Valor del vector: %d\n",vector1[i]);
+
+    return 0;
+}
