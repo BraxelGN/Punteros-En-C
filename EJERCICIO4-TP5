@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAXIMO 1000
+
+
+void cargarVector(int vect[],int vect2[],int tamanio){
+    int j=0;
+    for (j=0;j<=tamanio;j++){
+        vect2[j]=vect[j];
+    }
+}
+int main()
+{
+    int i=0,TAM=MAXIMO;
+    int vec1[TAM],vec2[TAM];
+    for(i=0;i<TAM;i++)
+    {
+        vec1[i]=i+1;
+    }
+    cargarVector(vec1,vec2,TAM);
+
+    printf("VALORES DE LOS VECTORES:\n");
+
+    for(i=0;i<TAM;i++){
+        printf("VECTOR 1: %d \t VECTOR 2: %d\n",vec1[i],vec2[i]);
+    }
+    return 0;
+}
