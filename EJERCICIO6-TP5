@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define TAMANIO_VECTOR 100
+
+void contar(int vector[], int* pares, int* impares) {
+    *pares = 0;
+    *impares = 0;
+    
+    for (int i = 0; i < TAMANIO_VECTOR; i++) {
+        if (vector[i] % 2 == 0) {
+            (*pares)++;
+        } else {
+            (*impares)++;
+        }
+    }
+}
+
+int main() {
+    int vector[TAMANIO_VECTOR];
+    int pares, impares;
+    
+    srand(time(0)); // Inicializar la semilla para generar números aleatorios
+    
+    // Cargar el vector con números aleatorios
+    for (int i = 0; i < TAMANIO_VECTOR; i++) {
+        vector[i] = rand() % 100; // Generar un número aleatorio entre 0 y 99
+    }
+    
+    contar(vector, &pares, &impares);
+    
+    printf("Cantidad de numeros pares: %d\n", pares);
+    printf("Cantidad de numeros impares: %d\n", impares);
+    
+    return 0;
+}
