@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+#define TAMANIO_VECTOR 5
+
+void carga(int vector[]) {
+    printf("Ingrese %d numeros:\n", TAMANIO_VECTOR);
+    for (int i = 0; i < TAMANIO_VECTOR; i++) {
+        scanf("%d", &vector[i]);
+    }
+}
+
+void encontrarMax(int vector[], int* maximo) {
+    *maximo = vector[0];
+    for (int i = 1; i < TAMANIO_VECTOR; i++) {
+        if (vector[i] > *maximo) {
+            *maximo = vector[i];
+        }
+    }
+}
+
+int main() {
+    int vector[TAMANIO_VECTOR];
+    carga(vector);
+    
+    int maximo;
+    encontrarMax(vector, &maximo);
+    
+    printf("El mayor numero del vector es: %d\n", maximo);
+    
+    return 0;
+}
