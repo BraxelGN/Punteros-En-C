@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+char ultimaLetra(const char* cadena) {
+    int i = 0;
+    char ultima = '\0'; // Inicializar con carácter nulo
+
+    // Recorrer la cadena hasta encontrar el final o llegar a 10 caracteres
+    while (cadena[i] != '\0' && i < 10) {
+        ultima = cadena[i];
+        i++;
+    }
+
+    return ultima;
+}
+
+int main() {
+    char cadena[11]; // Reservar espacio para 10 caracteres + el carácter nulo
+
+    printf("Ingrese una cadena de hasta 10 caracteres: ");
+    scanf("%10s", cadena); // Leer la cadena y limitar la entrada a 10 caracteres
+
+    char ultima = ultimaLetra(cadena);
+
+    printf("La ultima letra es: %c\n", ultima);
+
+    return 0;
+}
