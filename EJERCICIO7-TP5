@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+#define NUMERO_DIAS 7
+
+void ingresarRecaudacion(float cajera1[], float cajera2[]) {
+    printf("Ingrese la recaudacion diaria de la cajera 1:\n");
+    for (int i = 0; i < NUMERO_DIAS; i++) {
+        printf("Dia %d: ", i + 1);
+        scanf("%f", &cajera1[i]);
+    }
+    
+    printf("\nIngrese la recaudacion diaria de la cajera 2:\n");
+    for (int i = 0; i < NUMERO_DIAS; i++) {
+        printf("Dia %d: ", i + 1);
+        scanf("%f", &cajera2[i]);
+    }
+}
+
+int determinarCajeraPremiada(const float cajera1[], const float cajera2[]) {
+    float totalCajera1 = 0, totalCajera2 = 0;
+    
+    for (int i = 0; i < NUMERO_DIAS; i++) {
+        totalCajera1 += cajera1[i];
+        totalCajera2 += cajera2[i];
+    }
+    
+    if (totalCajera1 > totalCajera2) {
+        return 1;
+    } else if (totalCajera2 > totalCajera1) {
+        return 2;
+    } else {
+        return 0;
+    }
+}
+
+void imprimirDiaMenorVenta(const float cajera[], int numeroCajera) {
+    float menorVenta = cajera[0];
+    int diaMenorVenta = 1;
+    
+    for (int i = 1; i < NUMERO_DIAS; i++) {
+        if (cajera[i] < menorVenta) {
+            menorVenta = cajera[i];
+            diaMenorVenta = i + 1;
+        }
+    }
+    
+    printf("La cajera %d tuvo la menor venta el dia %d.\n", numeroCajera, diaMenorVenta);
+}
+
+int main() {
+    float cajera1[NUMERO_DIAS], cajera2[NUMERO_DIAS];
+    
+    ingresarRecaudacion(cajera1, cajera2);
+    
+    int cajeraPremiada = determinarCajeraPremiada(cajera1, cajera2);
+    
+    if (cajeraPremiada == 0) {
+        printf("Ambas cajeras tienen la misma recaudacion total.\n");
+    } else {
+        printf("La cajera %d recibira el premio.\n", cajeraPremiada);
+    }
+    
+    imprimirDiaMenorVenta(cajera1, 1);
+    imprimirDiaMenorVenta(cajera2, 2);
+    
+    return 0;
+}
