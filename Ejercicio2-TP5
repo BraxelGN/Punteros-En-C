@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+float calcularPromedio(float *n1, float *n2, float *n3)
+{
+    float promedio;
+    promedio = (*n1+*n2+*n3)/3;
+    return promedio;
+
+}
+
+int main()
+{
+    float *pNota1,*pNota2,*pNota3;
+    float nota1,nota2,nota3, prom;
+    printf("Ingrese el valor de la primer nota: ");
+    scanf("%f",&nota1);
+    printf("Ingrese el valor de la segunda nota: ");
+    scanf("%f",&nota2);
+    printf("Ingrese el valor de la tercer nota: ");
+    scanf("%f",&nota3);
+
+    pNota1=&nota1;
+    pNota2=&nota2;
+    pNota3=&nota3;
+
+    prom = calcularPromedio(pNota1,pNota2,pNota3);
+
+    if (prom>=7.0){
+        printf("\nEL ALUMNO APROBO LA MATERIA\n");
+    }
+    else{
+        printf("\n EL ALUMNO NO APROBO LA MATERIA");
+    }
+
+    return 0;
+}
