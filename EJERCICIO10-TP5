@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+void cantidad(int numero, const char* cadena) {
+    int longitud = strlen(cadena);
+
+    if (longitud == numero) {
+        printf("La cadena tiene la misma cantidad de letras que el numero ingresado.\n");
+    } else {
+        printf("La cadena NO tiene la misma cantidad de letras que el numero ingresado.\n");
+    }
+}
+
+int main() {
+    int numero;
+    char cadena[100];
+
+    printf("Ingrese un numero entero: ");
+    scanf("%d", &numero);
+
+    printf("Ingrese una cadena de caracteres: ");
+    scanf(" %99[^\n]", cadena); // Leer la cadena sin espacios al principio
+
+    cantidad(numero, cadena);
+
+    return 0;
+}
