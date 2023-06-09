@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+void mostrarResultado(int *num1,int *num2)
+{
+	int resultado;
+	resultado = *num1+*num2;
+	printf("\n\nPROCESANDO RESULTADO: \n");
+	printf("LA SUMA ES = %d",resultado);
+}
+
+int main(int argc, char *argv[]) {
+	int *pUno;
+	int *pDos;
+	int a,b;
+	
+	printf("INGRESE UN VALOR: ");
+	scanf("%d",&a);
+	printf("INGRESE UN VALOR: ");
+	scanf("%d",&b);	
+	mostrarResultado(&a,&b);
+	return 0;
+}
