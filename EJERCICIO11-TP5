@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* convertirNumero(int numero) {
+    // Definir los nombres de los dígitos
+    const char* nombres[] = {
+        "CERO", "UNO", "DOS", "TRES", "CUATRO",
+        "CINCO", "SEIS", "SIETE", "OCHO", "NUEVE"
+    };
+
+    // Contar la cantidad de dígitos en el número
+    int contador = 0;
+    int temp = numero;
+    while (temp != 0) {
+        temp /= 10;
+        contador++;
+    }
+
+    // Crear la cadena de caracteres para almacenar el número en formato texto
+    char* cadena = (char*) malloc((contador * 6 + 1) * sizeof(char));
+    cadena[0] = '\0'; // Inicializar la cadena vacía
+
+    // Convertir cada dígito a texto y concatenarlos en la cadena
+    temp = numero;
+    while (temp != 0) {
+        int digito = temp % 10;
+        temp /= 10;
+
+        // Mover los caracteres existentes en la cadena un lugar hacia la derecha
+        int longitud = strlen(cadena);
+        for (int i = longitud; i >= 0; i--) {
+            cadena[i + 1] = cadena[i];
+        }
+
+        // Agregar el nombre del dígito al inicio de la cadena
+        strcpy(cadena, nombres[digito]);
+        strcat(cadena, " ");
+    }
+
+    return cadena;
+}
+
+int main() {
+    int numero;
+
+    printf("Ingrese un número entero: ");
+    scanf("%d", &numero);
+
+    char* texto = convertirNumero(numero);
+
+    printf("Número convertido a texto: %s\n", texto);
+
+    free(texto); // Liberar la memoria asignada
+
+    return 0;
+}
